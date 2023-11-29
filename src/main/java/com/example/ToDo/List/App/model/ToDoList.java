@@ -6,12 +6,15 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.BeanUtils;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.example.ToDo.List.App.enums.Status;
 import com.example.ToDo.List.App.requestDTO.ToDoListRequestDTO;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +30,7 @@ import lombok.NoArgsConstructor;
 @Table(name="todolist")
 @AllArgsConstructor
 @NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class ToDoList {
 	
 	
@@ -37,9 +41,11 @@ public class ToDoList {
 	private String description;
 	@CreationTimestamp
 	private LocalDateTime creationDate;
+	@CreatedBy
 	private String createdUser;
 	@UpdateTimestamp
 	private LocalDateTime modifiedDate;
+	@LastModifiedBy
 	private String modifiedUser;
 	private String estimatedTimeToCompletion;
 	@Enumerated(EnumType.STRING)

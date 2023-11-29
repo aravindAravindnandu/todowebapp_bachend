@@ -1,6 +1,5 @@
 package com.example.ToDo.List.App.service.serviceImpl;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,7 +64,6 @@ public class ToDoListImpl implements ToDoListService {
 		ToDoList doList = new ToDoList();
 		if (toDo.isPresent()) {
 			doList = requestDTO.convertToModel(toDo.get());
-			doList.setModifiedDate(LocalDateTime.now());
 			doList = doListRepository.save(doList);
 			log.info("The given id : " + id + " is updated");
 		} else {
