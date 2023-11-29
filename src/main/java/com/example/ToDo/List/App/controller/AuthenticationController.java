@@ -40,7 +40,7 @@ public class AuthenticationController {
 
   @PostMapping("/refresh-token")
   public void refreshToken(@Valid
-      HttpServletRequest request,
+      HttpServletRequest request,@Valid
       HttpServletResponse response
   ) throws IOException {
     service.refreshToken(request, response);
