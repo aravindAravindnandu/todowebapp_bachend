@@ -39,7 +39,7 @@ public class ToDoController {
 
 	@GetMapping("/{id}")
 	@PreAuthorize("hasAuthority('user:read')")
-	public ResponseEntity<ToDoListResponseDTO> findById(@Valid @PathVariable Integer id) throws Exception {
+	public ResponseEntity<ToDoListResponseDTO> findById(@PathVariable Integer id) throws Exception {
 		return ResponseEntity.ok(doListService.findById(id));
 	}
 
@@ -58,7 +58,7 @@ public class ToDoController {
 
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasAuthority('user:delete')")
-	public ResponseEntity<ToDoListResponseDTO> delete(@Valid @PathVariable Integer id) throws Exception {
+	public ResponseEntity<ToDoListResponseDTO> delete(@PathVariable Integer id) throws Exception {
 		return ResponseEntity.ok(doListService.delete(id));
 	}
 
